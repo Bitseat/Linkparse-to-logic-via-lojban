@@ -1,0 +1,24 @@
+;*************** surpringnessII calculation process info for 1 gram patterns.***************
+;*************** surpringnessII calculation process info for 2 gram patterns.***************
+=================Debug: calculate II_Surprisingness for pattern: ====================
+Frequency = 2 p = 2/13 = 0.153846
+(EvaluationLink
+  (LinkGrammarRelationshipNode "W")
+  (ListLink
+    (PatternVariableNode "$var_1")
+    (PatternVariableNode "$var_2")
+  )
+)
+(EvaluationLink
+  (LinkGrammarRelationshipNode "X")
+  (ListLink
+    (PatternVariableNode "$var_1")
+    (PatternVariableNode "$var_3")
+  )
+)
+
+ nII_Surprisingness = Min Surprisingness_II / p = 1e+09
+=================Debug: end calculate II_Surprisingness ====================
+
+;*************** surpringnessII calculation process info for 3 gram patterns.***************
+;*************** surpringnessII calculation process info for 4 gram patterns.***************

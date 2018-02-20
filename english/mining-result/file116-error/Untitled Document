@@ -1,0 +1,27 @@
+bitseat@bitseat-OptiPlex-9020:~$ cd kukucog/opencog/build/bitseat@bitseat-OptiPlex-9020:~/kukucog/opencog/build$ ./opencog/cogserver/server/cogserver -c ../lib/opencog_patternminer_nlp.conf
+Listening on port 17001
+Debug: PatternMiner init finished! 
+
+Debug: PatternMining start! Max gram = 4, mode = Depth_First
+Using 1 threads. 
+Corpus size: 764 links in total. 
+
+
+Start thread 0: will process Link number from 0 to (excluded) 764
+37.5654% completed in Thread 0.terminate called after throwing an instance of 'opencog::SyntaxException'
+  what():  Unexpected contents in TypedVariableLink
+Expected type specifier (e.g. TypeNode, TypeChoice, etc.), got PatternVariableNode (/home/bitseat/kukucog/atomspace/opencog/atoms/core/VariableList.cc:340)
+[2018-01-31 14:43:29:707] [ERROR] Caught signal 6 (Aborted) on thread 140616468518656
+	Stack Trace:
+	2: basic_string.h:2809	  std::string::_M_data() const
+	3: [0x36cb0] ??() ??:0
+	4: raise.c:56	__GI_raise()
+	5: abort.c:91	__GI_abort()
+	6: [0x6bbbd] ??() ??:0
+	7: [0x69b96] ??() ??:0
+	8: [0x69be1] ??() ??:0
+	9: [0x908ae] ??() ??:0
+	10: pthread_create.c:312	start_thread()
+	11: clone.S:113	??()
+
+bitseat@bitseat-OptiPlex-9020:~/kukucog/opencog/build$ 
