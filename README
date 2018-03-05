@@ -1,0 +1,52 @@
+messy readme to do the linkparse-to-logic-via-lojban in my way ;)
+
+1. clone and install opencog
+	https://wiki.opencog.org/w/Installing_OpenCog_for_Noobs
+2. to build haskell code
+	Steps to take
+	1. For building the code run the following commands from the build directory
+	cmake -DBUILD_LOJBAN=1 ..
+	make -j$(nproc)
+	2. Start the cogserver. It will need internet connection for downloading a file on the first run.
+	./opencog/cogserver/server/cogserver -c ../lib/lojban.conf
+	3. Connect to the opencog shell
+	rlwrap telnet localhost 17001
+	4. Test the parser
+	parse-lojban mi jimpe ti
+3. get the parallel corpus from link below
+	https://docs.google.com/spreadsheets/d/1Md0pojdcO3EVf3LQPHXFB7uOThNvTWszkWd5T4YhvKs/edit#gid=551499663
+	or here
+	https://docs.google.com/spreadsheets/d/19faXeZCUuZ_uL6qcpQdMhetTXiKc5ZsOcZkYiAZ_pRw/edit#gid=26
+4. find big, only English sentences, corpus and link parse it.
+5. link parse all the english sentences
+	start the cogserver
+	load file =>scheme-to-parse-all-sents-in-tatoeba.scm
+6. parse all the lojban sentences
+	start server with lojban.conf file
+	parse-all-lojban path/to/lojban/sentences
+7. mine the english parse
+extract only EvaluationLinks with LinkGrammarRelationshipNode from the parse
+start opencog server with default setting of opencog_patternminer_nlp.conf
+run the patternminer
+detailed step
+	go to build directory
+	./opencog/cogserver/server/cogserver -c 	../lib/opencog_patternminer_nlp.conf
+	on another terminal => rlwrap telnet localhost 17001
+	on opencog shell => scm
+	on scheme shell => (use-modules (opencog) (opencog  nlp) (opencog 	patternminer))
+	(clear)
+	(load-scm-from-file “/path/to/the/file/that/contain/the/parse/result.scm”)
+	(pm-run-patternminer)
+mining result will be written in build directory
+8. mine the lojban (follow same step as described above)
+9. mine the big corpus parsed (follow same step as described above)
+10. choose the gram you desire. I choose 3 gram.
+11. put all the three EvalustionLinks(in Topfinal3gram.scm for the parallel corpus) in a line (tatoeba3gram.scm)
+12. put all the three EvalustionLinks(in surprisingenssI3gram.scm for the bigger corpus) in a line (bigcorpus3gram.scm)
+13. get the intersection of the above 2 files (tatoeba3gram.scm and bigcorpus3gram.scm) using intersection.sh name the file matched-combinations.scm
+14. for each line in matched-combinations.scm find all the sentences that contain the specified combination in their link parse
+15. remove duplicate lines with remove-duplicates.sh
+16. get the parse of each sentence in each file and mine it
+	(use scripts in Linkparse-to-logic-via-lojban/english/scripts folder to 	mine)
+17. get the lojban equivalent for each file, get the parse and mine it
+
