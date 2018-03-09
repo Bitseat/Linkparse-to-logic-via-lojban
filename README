@@ -33,20 +33,20 @@ detailed step
 	./opencog/cogserver/server/cogserver -c 	../lib/opencog_patternminer_nlp.conf
 	on another terminal => rlwrap telnet localhost 17001
 	on opencog shell => scm
-	on scheme shell => (use-modules (opencog) (opencog  nlp) (opencog 	patternminer))
+	on scheme shell => (use-modules (opencog) (opencog  nlp) (opencog patternminer))
 	(clear)
 	(load-scm-from-file “/path/to/the/file/that/contain/the/parse/result.scm”)
 	(pm-run-patternminer)
 mining result will be written in build directory
 8. mine the lojban (follow same step as described above)
 9. mine the big corpus parsed (follow same step as described above)
-10. choose the gram you desire. I choose 3 gram.
+10. choose the gram you like. I choose 3 gram.
 11. put all the three EvalustionLinks(in Topfinal3gram.scm for the parallel corpus) in a line (tatoeba3gram.scm)
 12. put all the three EvalustionLinks(in surprisingenssI3gram.scm for the bigger corpus) in a line (bigcorpus3gram.scm)
 13. get the intersection of the above 2 files (tatoeba3gram.scm and bigcorpus3gram.scm) using intersection.sh name the file matched-combinations.scm
 14. for each line in matched-combinations.scm find all the sentences that contain the specified combination in their link parse
 15. remove duplicate lines with remove-duplicates.sh
 16. get the parse of each sentence in each file and mine it
-	(use scripts in Linkparse-to-logic-via-lojban/english/scripts folder to 	mine)
+	(use scripts in Linkparse-to-logic-via-lojban/english/scripts folder to mine)
 17. get the lojban equivalent for each file, get the parse and mine it
 
